@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talented</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.6.2/shaka-player.compiled.js"></script>
     <script src="./app.js" defer></script>
     <!-- Add the Bootstrap CSS file via CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add the Bootstrap JavaScript file via CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.shaka-player.org/release/shaka-player.compiled.js"></script>
     <script src="https://players.brightcove.net/YOUR_ACCOUNT_ID/default_default/index.min.js"></script>
-    <script src="./index.php"></script>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen">
 </head>
 
-<body onload="getVideos()">
+<body>
     <header>
         <nav>
             <ul>
@@ -68,7 +68,7 @@
             <button onclick="playPauseVideo('featured-video')">Play/Pause Video</button>
         </section>
         <section id="video-list">
-            <h2>Recent Videos</h2>
+            <h2>Videos</h2>
             <ul id="video-list-ul">
             </ul>
         </section>

@@ -1,31 +1,4 @@
 "use strict";
-window.onload = function () {
-  document
-    .getElementById("upload-form")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const formData = new FormData();
-      formData.append("title", document.getElementById("title").value);
-      formData.append(
-        "description",
-        document.getElementById("description").value
-      );
-      formData.append("sport", document.getElementById("sport").value);
-      formData.append("skill", document.getElementById("skill").value);
-      formData.append("location", document.getElementById("location").value);
-      formData.append("video", document.getElementById("video").files[0]);
-
-      const xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          alert(this.responseText);
-        }
-      };
-      xhttp.open("POST", "upload.php", true);
-      xhttp.send(formData);
-    });
-};
-
 function playPauseVideo(videoId) {
   const video = document.getElementById(videoId);
   if (video.paused) {
