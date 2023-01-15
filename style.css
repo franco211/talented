@@ -1,0 +1,193 @@
+/* Add a background color and padding to the body */
+body {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+/* Add a background color and padding to the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+/* Style the h1 and h2 tags in the header */
+header h1, header h2 {
+    margin: 0;
+}
+/* Add a background color and padding to the main content */
+main {
+    background-color: #fff;
+    padding: 20px;
+}
+/* Add a background color and padding to the form */
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+/* Style the input and select elements */
+input[type="text"], select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+/* Style the textarea element */
+textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* Style the submit button on hover */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+/* Style the video title and description */
+.video-title, .video-description {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* Style the video meta information */
+.video-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Add a responsive layout for the video player */
+.video-player {
+    width: 100%; /* Full width of the container */
+    height: 0; /* Height is set to 0, and will be set by the aspect ratio */
+    padding-bottom: 56.25%; /* Maintains a 16:9 aspect ratio */
+}
+/* Add a responsive layout for the video list */
+.video-list {
+    display: flex; /* Display the items in a row */
+    flex-wrap: wrap; /* Wrap the items to the next line if they don't fit */
+    justify-content: space-between; /* Distribute the items evenly across the row */
+}
+/* Add a responsive layout for the video thumbnail */
+.video-thumbnail {
+    width: 30%; /* Width of each item */
+    height: 0; /* Height is set to 0, and will be set by the aspect ratio */
+    padding-bottom: 75%; /* Maintains a 4:3 aspect ratio */
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+}
+/* Make the text inputs and textarea take up full width on small screens */
+@media only screen and (max-width: 600px) {
+    input[type="text"], textarea {
+        width: 100%;
+    }
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    header nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Style the navigation menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+nav a:hover {
+    color: #ccc;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+}
+/* Style the video list items */
+.video-list-item {
+    width: 30%;
+    margin-bottom: 20px;
+}
+/* Style the video title */
+.video-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* Style the filter form */
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.filter-form input[type="text"], .filter-form select {
+    width: 30%;
+    margin-right: 10px;
+}
+.filter-form input[type="submit"] {
+    width: 20%;
+}
+
+/* Add some padding and margin to the form container */
+#search-form {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Add some margin to the form group elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Add some styling to the form labels */
+.form-group label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Add some styling to the form controls */
+.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Add some styling to the form file input */
+.form-control-file {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}

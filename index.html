@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talented</title>
+    <script src="./app.js" defer></script>
+    <!-- Add the Bootstrap CSS file via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add the Bootstrap JavaScript file via CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.shaka-player.org/release/shaka-player.compiled.js"></script>
+    <script src="https://players.brightcove.net/YOUR_ACCOUNT_ID/default_default/index.min.js"></script>
+    <script src="./index.php"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+</head>
+
+<body onload="getVideos()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to My Video Sharing Website</h1>
+        <section id="search-form">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="sport">Sport:</label>
+                    <select id="sport" name="sport" class="form-control">
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="tennis">Tennis</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="skill">Skill Level:</label>
+                    <select id="skill" name="skill" class="form-control">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="video">Upload Video:</label>
+                    <input type="file" name="video" id="video" class="form-control-file">
+                </div>
+            </form>
+        </section>
+        <section id="featured-video">
+            <h2>Introduction Video</h2>
+            <div id="video-container"></div>
+            <button onclick="playPauseVideo('featured-video')">Play/Pause Video</button>
+        </section>
+        <section id="video-list">
+            <h2>Recent Videos</h2>
+            <ul id="video-list-ul">
+            </ul>
+        </section>
+
+    </main>
+    <footer>
+        <p>Copyright © 2023 talented Website</p>
+    </footer>
+</body>
+
+</html>
