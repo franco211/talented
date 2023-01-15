@@ -1,6 +1,6 @@
 "use strict";
 function playPauseVideo(videoId) {
-  const video = document.getElementById(videoId);
+  const video = document.getElementById("video-list-ul");
   if (video.paused) {
     video.play();
   } else {
@@ -31,8 +31,8 @@ function searchVideos() {
   xhttp.send();
 }
 
-const video = document.getElementById("featured-video");
-const tracks = video.textTracks;
+const video = document.getElementById("video-list");
+const videos = video;
 const player = new shaka.Player();
 // Attach the player to the <video> element
 player.attach(video);
@@ -83,10 +83,9 @@ player.load(manifestUri).then(() => {
   console.log("The video has loaded!");
 });
 
-for (let i = 0; i < tracks.length; i++) {
-  if (tracks[i].kind === "subtitles") {
-    const track = tracks[i];
-    track.mode = "showing";
+for (let i = 0; i < video.length; i++) {
+  if (video[i].kind === "subtitles") {
+    video.mode = "showing";
     break;
   }
 }
@@ -194,3 +193,19 @@ fetch("/recent-videos")
       videoList.appendChild(li);
     });
   });
+
+const share = new Share(".sharing-container", {
+  networks: {
+    facebook: {
+      app_id: "YOUR_APP_ID",
+    },
+    twitter: {},
+    linkedin: {},
+    instagram: {},
+  },
+});
+
+const videoUrl = "https://www.yourwebsite.com/videos/featured-video";
+share.update({
+  url: videoUrl,
+});

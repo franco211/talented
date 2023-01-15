@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.6.2/shaka-player.compiled.js"></script>
     <script src="./app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/share.js@latest/dist/share.min.js"></script>
     <!-- Add the Bootstrap CSS file via CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add the Bootstrap JavaScript file via CDN -->
@@ -62,16 +63,20 @@
                 </div>
             </form>
         </section>
-        <section id="featured-video">
-            <h2>Introduction Video</h2>
-            <div id="video-container"></div>
-            <button onclick="playPauseVideo('featured-video')">Play/Pause Video</button>
-        </section>
         <section id="video-list">
             <h2>Videos</h2>
             <ul id="video-list-ul">
             </ul>
+            <div class="sharing-buttons btn-group">
+                <a href="#" class="btn btn-primary share-facebook">Facebook</a>
+                <a href="#" class="btn btn-info share-twitter">Twitter</a>
+                <a href="#" class="btn btn-danger share-linkedin">LinkedIn</a>
+                <a href="https://www.instagram.com/your_instagram_username"
+                    class="btn btn-dark share-instagram">Instagram</a>
+            </div>
         </section>
+
+
 
     </main>
     <footer>
