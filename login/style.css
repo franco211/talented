@@ -46,8 +46,14 @@ a.btn-link {
     background-color: #4CAF50;
     color: white;
 }
-#image-gallery {
+
+#image-gallery{
     display: flex;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #ccc;
+    overflow: hidden;
 }
 
 .image {
