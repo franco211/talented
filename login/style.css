@@ -63,3 +63,29 @@ a.btn-link {
 .image:not(:hover) {
     width: 25%;
 }
+
+#spotlight {
+    position: inherit;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    text-align: center;
+    line-height: 100vh;
+    font-size: 5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+img[aria-label]:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 0.5em;
+}
+

@@ -1,44 +1,58 @@
-document
-  .getElementById("register-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    var username = document.getElementById("username").value;
-    var existingUsername = localStorage.getItem("username");
-    if (existingUsername === username) {
-      alert("User already exist, please sign-in");
-      window.location.href = "login.html";
-    } else {
-      localStorage.setItem("username", username);
-      window.location.href = "index.html";
-    }
+console.log($);
+
+$(document).ready(function () {
+  // hide the h1 element on page load
+  $(".container h1#spotlight").hide();
+  $(".container .image").mouseout(function () {
+    $(".container h1#spotlight").show();
+  });
+});
+
+$(document).ready(function () {
+  // hide the login form on page load
+  $(".container #login-form").hide();
+
+  // handle clicks on the "Already have an account? Login" link
+  $("#login-link").click(function () {
+    $(".container #register-form").hide();
+    $(".container #login-form").show();
+  });
+});
+
+$(document).ready(function () {
+  // check if the user already has an account
+  var hasAccount = true; // replace this with your own logic
+
+  if (hasAccount) {
+    // hide the register form and show the login form
+    $("#register-form").hide();
+    $("#login-form").show();
+    $("#login-link").hide();
+    $("#register-link").show();
+  } else {
+    // hide the login form and show the register form
+    $("#login-form").hide();
+    $("#register-form").show();
+    $("#register-link").hide();
+    $("#login-link").show();
+  }
+
+  // handle clicks on the "Already have an account? Login" link
+  $("#login-link").click(function () {
+    $("#login-form").show();
+    $("#register-form").hide();
+    $("#login-link").hide();
+    $("#register-link").show();
   });
 
-document
-  .getElementById("login-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    //Add your code here to handle login process
+  // handle clicks on the "Don't have an account? Register" link
+  $("#register-link").click(function () {
+    $("#register-form").show();
+    $("#login-form").hide();
+    $("#register-link").hide();
+    $("#login-link").show();
   });
-
-document
-  .getElementById("login-link")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    document.getElementById("register-form").style.display = "none";
-    document.getElementById("login-form").style.display = "block";
-    document.getElementById("login-link").style.display = "none";
-    document.getElementById("register-link").style.display = "block";
-  });
-
-document
-  .getElementById("register-link")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    document.getElementById("register-form").style.display = "block";
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("register-link").style.display = "none";
-    document.getElementById("login-link").style.display = "block";
-  });
+});
 
 document.getElementById("my-button").style.backgroundColor = "blue";
 
@@ -47,17 +61,22 @@ document.getElementById("my-button").addEventListener("click", function () {
 });
 
 function enlarge(image) {
-    var images = document.getElementsByClassName("image");
-    for (var i = 0; i < images.length; i++) {
-        if (images[i] !== image) {
-            images[i].style.width = "25%";
-        } else {
-            image.style.width = "50%";
-        }
+  const images = document.getElementsByClassName("image");
+  for (let i = 0; i < images.length; i++) {
+    if (images[i] !== image) {
+      images[i].style.width = "25%";
+    } else {
+      image.style.width = "50%";
     }
+  }
 }
 
 function goToSection(id) {
-    var section = document.getElementById(id);
-    section.scrollIntoView();
+  const section = document.getElementById(id);
+  section.scrollIntoView();
+}
+
+function updateHeading(img) {
+  const heading = document.getElementById("spotlight");
+  heading.innerHTML = img.alt;
 }
