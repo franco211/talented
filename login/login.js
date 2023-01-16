@@ -78,5 +78,13 @@ function goToSection(id) {
 
 function updateHeading(img) {
   const heading = document.getElementById("spotlight");
-  heading.innerHTML = img.alt;
+  heading.innerHTML = "Spotlight";
+
+  img.addEventListener("mouseover", function () {
+    heading.innerHTML = img.alt;
+  });
+
+  img.addEventListener("mouseout", function () {
+    heading.innerHTML = "Spotlight";
+  });
 }
