@@ -47,7 +47,7 @@ a.btn-link {
     color: white;
 }
 
-#image-gallery{
+#image-gallery {
     display: flex;
     background-color: #fff;
     padding: 20px;
@@ -57,17 +57,21 @@ a.btn-link {
 }
 
 .image {
-    width: 33.33%;
+    flex: 1;
     transition: all 0.5s ease;
+    border-radius: 50%; /* make the images circular */
+    overflow: hidden; /* hide any overflow */
 }
+
+.image img{
+    width:100%;
+    height:100%;
+}
+
 
 .image:hover {
-    width: 50%;
-    z-index: 1;
-}
-
-.image:not(:hover) {
-    width: 25%;
+    flex: 1.5; /* increase the size when hovered */
+    z-index: 1; /* bring the hovered image to the front */
 }
 
 img[aria-label]:hover::after {
@@ -79,6 +83,7 @@ img[aria-label]:hover::after {
     color: #fff;
     padding: 0.5em;
 }
+
 
 #spotlight {
     position: inherit;
