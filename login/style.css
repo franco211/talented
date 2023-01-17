@@ -70,6 +70,16 @@ a.btn-link {
     width: 25%;
 }
 
+img[aria-label]:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 0.5em;
+}
+
 #spotlight {
     position: inherit;
     display: block;
@@ -84,14 +94,3 @@ a.btn-link {
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
 }
-
-img[aria-label]:hover::after {
-    content: attr(aria-label);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    color: #fff;
-    padding: 0.5em;
-}
-
