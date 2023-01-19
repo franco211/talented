@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.6.2/shaka-player.compiled.js"></script>
-    <script src="./app.js" defer></script>
+    <script src="./app.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/share.js@latest/dist/share.min.js"></script>
     <!-- Add the Bootstrap CSS file via CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -23,8 +23,8 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#video-list">Videos</a></li>
+                <li><a href="#description">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -79,7 +79,12 @@
             </div>
         </section>
 
-
+        <form id="contact-form">
+            <div id="contact" class="contact">
+                <!-- form inputs -->
+                <input type="submit" value="Send Request">
+            </div>
+        </form>
 
     </main>
     <footer>

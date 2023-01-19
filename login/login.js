@@ -1,4 +1,13 @@
-console.log($);
+"use strict";
+// Get form data
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+const email = document.getElementById("email").value;
+
+// Store form data in local storage
+localStorage.setItem("username", username);
+localStorage.setItem("password", password);
+localStorage.setItem("email", email);
 
 $(document).ready(function () {
   // hide the h1 element on page load

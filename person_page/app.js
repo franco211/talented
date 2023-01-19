@@ -1,4 +1,77 @@
 "use strict";
+// Get stored data from local storage
+const storedUsername = localStorage.getItem("username");
+// Populate fields with stored data
+if (storedUsername !== null) {
+  document.getElementById("username").value = storedUsername;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("video-list").addEventListener("click", function () {
+    scrollTo("videos");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("contact").addEventListener("click", function () {
+    scrollTo("contact");
+  });
+});
+
+function scrollTo(elementId) {
+  const element = document.getElementById(elementId);
+  element.scrollIntoView({ behavior: "smooth" });
+}
+
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // prevent the form from submitting
+    sendEmail();
+  });
+
+function sendEmail() {
+  // Get the form data
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  // Use the Fetch API to send a POST request to the server with the form data
+  fetch("/send-email", {
+    method: "POST",
+    body: JSON.stringify({ name, email, message }),
+  }).then((response) => {
+    if (response.ok) {
+      // Email sent successfully
+      alert("Your request has been sent!");
+    } else {
+      // There was an error sending the email
+      alert("Error sending your request, please try again later.");
+    }
+  });
+}
+
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // prevent the form from submitting
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("message", message);
+  });
+
+document.getElementById("contact").addEventListener("click", function () {
+  const name = localStorage.getItem("name");
+  const email = localStorage.getItem("email");
+  const message = localStorage.getItem("message");
+  const subject = "Contact Request";
+  const body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+  location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+});
+
 function playPauseVideo(videoId) {
   const video = document.getElementById("video-list-ul");
   if (video.paused) {
