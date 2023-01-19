@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("description").addEventListener("click", function () {
+    scrollTo("description");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("contact").addEventListener("click", function () {
     scrollTo("contact");
   });
