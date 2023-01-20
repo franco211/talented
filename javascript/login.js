@@ -68,7 +68,7 @@ $(document).ready(() => {
   });
 
   // handle clicks on the "Don't have an account? Register" link
-  $("#register-link").click(function () {
+  $("#register-link").click(() => {
     $("#login-form").hide();
     $("#register-form").show();
   });
