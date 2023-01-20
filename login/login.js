@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   // check if the user already has an account
-  cosnt hasAccount = true; // replace this with your own logic
+  const hasAccount = true; // replace this with your own logic
 
   if (hasAccount) {
     // hide the register form and show the login form
@@ -102,7 +102,6 @@ form.addEventListener("submit", function (event) {
       console.error("Error:", error);
     });
 });
-
 
 document.getElementById("my-button").style.backgroundColor = "blue";
 
