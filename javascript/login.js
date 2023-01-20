@@ -7,8 +7,7 @@ for (let i = 0; i < images.length; i++) {
         updateHeading(this);
     });
     images[i].addEvent
-
-
+}
 function updateHeading(img) {
   const heading = document.getElementById("image-gallery");
   heading.innerHTML = "image-gallery";
@@ -20,8 +19,6 @@ function updateHeading(img) {
   img.addEventListener("mouseout", function () {
     heading.innerHTML = "image-gallery";
   });
-}
-
 // Get form data
 const username = document.getElementById("username").value;
 const password = document.getElementById("password").value;
@@ -119,8 +116,6 @@ form.addEventListener("submit", function (event) {
     });
 });
 
-import { v4 as uuidv4 } from "uuid";
-
 // Send a validation email to the user when they sign up
 function sendValidationEmail(email) {
   // Generate a unique code or link to include in the email
@@ -203,61 +198,39 @@ loginForm.addEventListener("submit", function (event) {
   login();
 });
 
-class MyDataTable extends HTMLElement {
-  constructor() {
-    super();
-    // Create a shadow root
-    this.attachShadow({ mode: "open" });
-    // Get the data from the database
-    this.getData();
-  }
-  async getData() {
-    // Open a connection to the database
-    const db = await openDB("myDatabase", 1);
-    // Get the data from the 'data' object store
-    const data = await db.getAll("data");
-    // Render the data in the shadow root
-    this.shadowRoot.innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${data
-            .map(
-              (item) => `
-            <tr>
-              <td>${item.id}</td>
-              <td>${item.username}</td>
-              <td>${item.email}</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      </table>
-    `;
-  }
-}
-
-// Register the custom element
-customElements.define("my-data-table", MyDataTable);
-
-// Add the custom element to the HTML form
-document.getElementById("login-form").innerHTML +=
-  "<my-data-table></my-data-table>";
-
-document.getElementById("my-button").style.backgroundColor = "blue";
-
 document.getElementById("my-button").addEventListener("click", function () {
   this.classList.toggle("active");
+  this.style.backgroundColor = "blue";
 });
 
 function goToSection(id) {
   const section = document.getElementById(id);
   section.scrollIntoView();
 }
+
+// Register the custom element
+customElements.define("my-data-table", MyDataTable);
+
+// Wait for the DOM to be loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the login form element
+    var loginForm = document.getElementById("login-form");
+
+    // Create a new instance of the custom element
+    var table = document.createElement('my-data-table');
+
+    // Append the custom element to the form
+    loginForm.appendChild(table);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the login form element
+    var loginForm = document.getElementById("login-form");
+
+    if(loginForm){
+        // Create a new instance of the custom element
+        var table = document.createElement('my-data-table');
+        // Append the custom element to the form
+        loginForm.appendChild(table);
+    }
+});
