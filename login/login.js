@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   // check if the user already has an account
-  var hasAccount = true; // replace this with your own logic
+  cosnt hasAccount = true; // replace this with your own logic
 
   if (hasAccount) {
     // hide the register form and show the login form
@@ -62,6 +62,47 @@ $(document).ready(function () {
     $("#login-link").show();
   });
 });
+
+const form = document.getElementById("register-form");
+
+// Listen for the submit event
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get the form data
+  const formData = new FormData(form);
+
+  // Perform validation
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const passwordConfirm = formData.get("passwordConfirm");
+
+  if (!name || !email || !password || !passwordConfirm) {
+    alert("All fields are required");
+    return;
+  }
+
+  if (password !== passwordConfirm) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  // Perform desired action
+  // for example sending data to server and displaying response
+  fetch("/register", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert(data.message);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
+
 
 document.getElementById("my-button").style.backgroundColor = "blue";
 
