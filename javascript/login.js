@@ -180,6 +180,54 @@ loginForm.addEventListener("submit", function (event) {
   login();
 });
 
+class MyDataTable extends HTMLElement {
+  constructor() {
+    super();
+    // Create a shadow root
+    this.attachShadow({ mode: "open" });
+    // Get the data from the database
+    this.getData();
+  }
+  async getData() {
+    // Open a connection to the database
+    const db = await openDB("myDatabase", 1);
+    // Get the data from the 'data' object store
+    const data = await db.getAll("data");
+    // Render the data in the shadow root
+    this.shadowRoot.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data
+            .map(
+              (item) => `
+            <tr>
+              <td>${item.id}</td>
+              <td>${item.username}</td>
+              <td>${item.email}</td>
+            </tr>
+          `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    `;
+  }
+}
+
+// Register the custom element
+customElements.define("my-data-table", MyDataTable);
+
+// Add the custom element to the HTML form
+document.getElementById("login-form").innerHTML +=
+  "<my-data-table></my-data-table>";
+
 document.getElementById("my-button").style.backgroundColor = "blue";
 
 document.getElementById("my-button").addEventListener("click", function () {
