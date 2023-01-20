@@ -1,111 +1,45 @@
 "use strict";
-
-const images = document.querySelectorAll(".image");
-for (let i = 0; i < images.length; i++) {
-    images[i].addEventListener("mouseover", function() {
-        enlarge(this);
-        updateHeading(this);
-    });
-    images[i].addEvent
-}
-function updateHeading(img) {
-  const heading = document.getElementById("image-gallery");
-  heading.innerHTML = "image-gallery";
-
-  img.addEventListener("mouseover", function () {
-    heading.innerHTML = img.alt;
-  });
-
-  img.addEventListener("mouseout", function () {
-    heading.innerHTML = "image-gallery";
-  });
-// Get form data
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
-const email = document.getElementById("email").value;
-
-// Store form data in local storage
-localStorage.setItem("username", username);
-localStorage.setItem("password", password);
-localStorage.setItem("email", email);
-
+////fixed/////
 $(document).ready(function () {
-  // hide the h1 element on page load
-  $(".container h1#spotlight").hide();
-  $(".container .image").mouseout(function () {
-    $(".container h1#spotlight").show();
+  $(".image").on("mouseover", function () {
+    $(this).width($(this).width() + 50);
+    $(this).height($(this).height() + 50);
+    $("#image-gallery").text($(this).attr("alt"));
+  });
+  $(".image").on("mouseout", function () {
+    $(this).width($(this).width() - 50);
+    $(this).height($(this).height() - 50);
+    $("#image-gallery").text("image-gallery");
   });
 });
 
-$(document).ready(function () {
-  // hide the login form on page load
-  $(".container #login-form").hide();
-
-  // handle clicks on the "Already have an account? Login" link
-  $("#login-link").click(function () {
-    $(".container #register-form").hide();
-    $(".container #login-form").show();
-  });
-});
-
-$(document).ready(function () {
-  // check if the user already has an account
-  const hasAccount = true; // replace this with your own logic
-
-  if (hasAccount) {
-    // hide the register form and show the login form
-    $("#register-form").hide();
-    $("#login-form").show();
-    $("#login-link").hide();
-    $("#register-link").show();
-  } else {
-    // hide the login form and show the register form
-    $("#login-form").hide();
-    $("#register-form").show();
-    $("#register-link").hide();
-    $("#login-link").show();
-  }
-
-  // handle clicks on the "Already have an account? Login" link
-  $("#login-link").click(function () {
-    $("#login-form").show();
-    $("#register-form").hide();
-    $("#login-link").hide();
-    $("#register-link").show();
-  });
-
-  // handle clicks on the "Don't have an account? Register" link
-  $("#register-link").click(function () {
-    $("#register-form").show();
-    $("#login-form").hide();
-    $("#register-link").hide();
-    $("#login-link").show();
-  });
-});
+///fixed /////
 
 const form = document.getElementById("register-form");
-// Listen for the submit event
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent the form from submitting
 
-  // Get the form data
-  const formData = new FormData(form);
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  const email = document.getElementById("email");
 
-  // Perform validation
-  const username = formData.get("username");
-  const email = formData.get("email");
-  const password = formData.get("password");
+  if (username && password && email) {
+    // Get form data
+    const formUsername = username.value;
+    const formPassword = password.value;
+    const formEmail = email.value;
 
-  if (!username || !email || !password) {
-    alert("All fields are required");
-    return;
+    // Store form data in local storage
+    localStorage.setItem("username", formUsername);
+    localStorage.setItem("password", formPassword);
+    localStorage.setItem("email", formEmail);
   }
 
   // Perform desired action
   // for example sending data to server and displaying response
   fetch("/register", {
     method: "POST",
-    body: formData,
+    body: JSON.stringify({ username, password, email }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -115,6 +49,86 @@ form.addEventListener("submit", function (event) {
       console.error("Error:", error);
     });
 });
+
+///////////////////////fixed///////
+$(document).ready(() => {
+  // hide the h1 element on page load
+  //$(".container h1#spotlight").hide();
+  $(".container .image").mouseout(() => {
+    $(".container h1#spotlight").show();
+  });
+
+  // hide the login form on page load
+  $("#login-form").hide();
+
+  // handle clicks on the "Already have an account? Login" link
+  $("#login-link").click(() => {
+    $("#register-form").hide();
+    $("#login-form").show();
+  });
+
+  // handle clicks on the "Don't have an account? Register" link
+  $("#register-link").click(function () {
+    $("#login-form").hide();
+    $("#register-form").show();
+  });
+
+  function toggleForms(hasAccount) {
+    if (hasAccount) {
+      // hide the register form and show the login form
+      $("#register-form").hide();
+      $("#login-form").show();
+      $("#login-link").hide();
+      $("#register-link").show();
+    } else {
+      // hide the login form and show the register form
+      $("#login-form").hide();
+      $("#register-form").show();
+      $("#register-link").hide();
+      $("#login-link").show();
+    }
+  }
+
+  // check if the user already has an account
+  const hasAccount = true; // replace this with your own logic
+  toggleForms(hasAccount);
+
+  // Perform desired action
+  // for example sending data to server and displaying response
+  const form = document.getElementById("register-form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get the form data
+    const formData = new FormData(form);
+
+    // Perform validation
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    if (!username || !email || !password) {
+      alert("All fields are required");
+      return;
+    }
+
+    // Perform desired action
+    // for example sending data to server and displaying response
+    fetch("/register", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert(data.message);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
+});
+
+//////fixed/////
 
 // Send a validation email to the user when they sign up
 function sendValidationEmail(email) {
@@ -208,29 +222,41 @@ function goToSection(id) {
   section.scrollIntoView();
 }
 
+class MyDataTable extends HTMLElement {
+  constructor() {
+    super();
+    // Wait for the DOM to be loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the login form element
+      var loginForm = document.getElementById("login-form");
+      // Append the custom element to the form
+      loginForm.appendChild(this);
+    });
+  }
+}
 // Register the custom element
 customElements.define("my-data-table", MyDataTable);
 
 // Wait for the DOM to be loaded
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the login form element
-    var loginForm = document.getElementById("login-form");
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the login form element
+  const loginForm = document.getElementById("login-form");
 
-    // Create a new instance of the custom element
-    var table = document.createElement('my-data-table');
+  // Create a new instance of the custom element
+  const table = document.createElement("my-data-table");
 
-    // Append the custom element to the form
-    loginForm.appendChild(table);
+  // Append the custom element to the form
+  loginForm.appendChild(table);
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Get the login form element
-    var loginForm = document.getElementById("login-form");
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the login form element
+  const loginForm = document.getElementById("login-form");
 
-    if(loginForm){
-        // Create a new instance of the custom element
-        var table = document.createElement('my-data-table');
-        // Append the custom element to the form
-        loginForm.appendChild(table);
-    }
+  if (loginForm) {
+    // Create a new instance of the custom element
+    const table = document.createElement("my-data-table");
+    // Append the custom element to the form
+    loginForm.appendChild(table);
+  }
 });
