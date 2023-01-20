@@ -1,24 +1,24 @@
 "use strict";
-function enlarge(image) {
-  image.style.width = "200px";
-}
-const images = document.getElementsByClassName("image");
+
+const images = document.querySelectorAll(".image");
 for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener("mouseover", function () {
-    enlarge(this);
-  });
-}
+    images[i].addEventListener("mouseover", function() {
+        enlarge(this);
+        updateHeading(this);
+    });
+    images[i].addEvent
+
 
 function updateHeading(img) {
-  const heading = document.getElementById("spotlight");
-  heading.innerHTML = "Spotlight";
+  const heading = document.getElementById("image-gallery");
+  heading.innerHTML = "image-gallery";
 
   img.addEventListener("mouseover", function () {
     heading.innerHTML = img.alt;
   });
 
   img.addEventListener("mouseout", function () {
-    heading.innerHTML = "Spotlight";
+    heading.innerHTML = "image-gallery";
   });
 }
 

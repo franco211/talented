@@ -30,23 +30,18 @@
         <h1 id="spotlight">Spotlight</h1>
 
         <div id="image-gallery">
-            <img src="./images/football.jpg" alt="football" aria-label="football" class="image"
-                onmouseover="enlarge(this); updateHeading(this)" onclick="goToSection('section1'); updateHeading(this)">
-            <img src="./images/basketball.jpg" alt="basketball" aria-label="basketball" class="image"
-                onmouseover="enlarge(this); updateHeading(this)" onclick="goToSection('section2'); updateHeading(this)">
-            <img src="./images/tennis.jpg" alt="tennis" aria-label="tennis" class="image"
-                onmouseover="enlarge(this); updateHeading(this)" onclick="goToSection('section3'); updateHeading(this)">
-            <img src="./images/hockey.jpg" alt="hockey" aria-label="hockey" class="image"
-                onmouseover="enlarge(this); updateHeading(this)" onclick="goToSection('section4'); updateHeading(this)">
+            <img src="./images/football.jpg" alt="football" aria-label="football" class="image">
+            <img src="./images/basketball.jpg" alt="basketball" aria-label="basketball" class="image">
+            <img src="./images/tennis.jpg" alt="tennis" aria-label="tennis" class="image">
+            <img src="./images/hockey.jpg" alt="hockey" aria-label="hockey" class="image">
             <img src="./images/Americanfootball.jpg" alt="American-football" aria-label="American-football"
-                class="image" onmouseover="enlarge(this); updateHeading(this)"
-                onclick="goToSection('section5'); updateHeading(this)">
+                class="image">
         </div>
 
         <form id="register-form" class="form-group">
             <h3>Create an Account</h3>
             <label for="username1">Username:</label>
-            <input type="text" id="username1" name="username" class="form-control" required>
+            <input type="text" id="username1" name="username" autocomplete="username" class="form-control" required>
             <br>
             <label for="password1">Password:</label>
             <input type="password" id="password1" name="password" class="form-control" autocomplete="current-password"
@@ -61,7 +56,7 @@
         <form id="login-form" class="form-group">
             <h3>Login</h3>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" class="form-control" required>
+            <input type="text" id="username" name="username" class="form-control" autocomplete="username" required>
             <br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" class="form-control" autocomplete="current-password"
