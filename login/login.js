@@ -64,7 +64,6 @@ $(document).ready(function () {
 });
 
 const form = document.getElementById("register-form");
-
 // Listen for the submit event
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting
@@ -73,18 +72,12 @@ form.addEventListener("submit", function (event) {
   const formData = new FormData(form);
 
   // Perform validation
-  const name = formData.get("name");
+  const username = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
-  const passwordConfirm = formData.get("passwordConfirm");
 
-  if (!name || !email || !password || !passwordConfirm) {
+  if (!username || !email || !password) {
     alert("All fields are required");
-    return;
-  }
-
-  if (password !== passwordConfirm) {
-    alert("Passwords do not match");
     return;
   }
 
