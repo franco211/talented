@@ -1,4 +1,13 @@
 "use strict";
+function enlarge(image) {
+  image.style.width = "200px";
+}
+
+function updateHeading(image) {
+  var heading = document.getElementById("someHeadingId");
+  heading.innerText = image.alt;
+}
+
 // Get form data
 const username = document.getElementById("username").value;
 const password = document.getElementById("password").value;
