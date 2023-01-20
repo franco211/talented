@@ -96,6 +96,8 @@ form.addEventListener("submit", function (event) {
     });
 });
 
+import { v4 as uuidv4 } from "uuid";
+
 // Send a validation email to the user when they sign up
 function sendValidationEmail(email) {
   // Generate a unique code or link to include in the email
