@@ -2,10 +2,24 @@
 function enlarge(image) {
   image.style.width = "200px";
 }
+const images = document.getElementsByClassName("image");
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener("mouseover", function () {
+    enlarge(this);
+  });
+}
 
-function updateHeading(image) {
-  var heading = document.getElementById("someHeadingId");
-  heading.innerText = image.alt;
+function updateHeading(img) {
+  const heading = document.getElementById("spotlight");
+  heading.innerHTML = "Spotlight";
+
+  img.addEventListener("mouseover", function () {
+    heading.innerHTML = img.alt;
+  });
+
+  img.addEventListener("mouseout", function () {
+    heading.innerHTML = "Spotlight";
+  });
 }
 
 // Get form data
@@ -243,31 +257,7 @@ document.getElementById("my-button").addEventListener("click", function () {
   this.classList.toggle("active");
 });
 
-function enlarge(image) {
-  const images = document.getElementsByClassName("image");
-  for (let i = 0; i < images.length; i++) {
-    if (images[i] !== image) {
-      images[i].style.width = "25%";
-    } else {
-      image.style.width = "50%";
-    }
-  }
-}
-
 function goToSection(id) {
   const section = document.getElementById(id);
   section.scrollIntoView();
-}
-
-function updateHeading(img) {
-  const heading = document.getElementById("spotlight");
-  heading.innerHTML = "Spotlight";
-
-  img.addEventListener("mouseover", function () {
-    heading.innerHTML = img.alt;
-  });
-
-  img.addEventListener("mouseout", function () {
-    heading.innerHTML = "Spotlight";
-  });
 }
